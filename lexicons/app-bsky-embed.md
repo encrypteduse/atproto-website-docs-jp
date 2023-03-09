@@ -13,7 +13,7 @@ summary: Bluesky Lexicon - Embed Schemas
 
 ## app.bsky.embed.external
 
-An representation of some externally linked content, embedded in another form of content
+他の形式のコンテンツに埋め込まれた、外部からリンクされたあるコンテンツの表現です。
 
 ```json
 {
@@ -102,7 +102,7 @@ An representation of some externally linked content, embedded in another form of
 
 ## app.bsky.embed.images
 
-A set of images embedded in some other form of content
+他の形式のコンテンツに埋め込まれた画像のセットです。
 
 ```json
 {

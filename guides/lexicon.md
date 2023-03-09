@@ -43,17 +43,17 @@ Lexiconのスキーマは、下記のTypescriptのインターフェースに従
 ```typescript
 interface LexiconDoc {
   lexicon: 1
-  id: string // an NSID
+  id: string // NSID
   type: 'query' | 'procedure' | 'record' | 'token'
   revision?: number
   description?: string
   defs?: JSONSchema
 
-  // if type == record
+  // typeが'record'の場合
   key?: string
   record?: JSONSchema
 
-  // if type == query or procedure
+  // typeが'query'または'procedure'の場合
   parameters?: Record<string, XrpcParameter>
   input?: XrpcBody
   output?: XrpcBody

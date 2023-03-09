@@ -7,31 +7,31 @@ tldr:
   - The DID maps to users' keys and host addresses
 ---
 
-# Identity
+# アイデンティティ
 
-The ATP identity system has a number of requirements:
+ATPのIDシステムには、いくつかの要件があります:
 
-* **ID provision.** Users should be able to create global IDs which are stable across services. These IDs should rarely change to ensure that links to their content are stable.
-* **Public key distribution.** Distributed systems rely on cryptography to prove the authenticity of data and provide end-to-end privacy. The identity system must publish their public keys with strong security.
-* **Key rotation.** Users must be able to rotate their key material without disrupting their identity.
-* **Service discovery.** To interact with users, applications must be able to discover the services in use by a given user.
-* **Usability.** Users should have human-readable and memorable names.
-* **Portability.** Identities should be portable across services. Changing a provider should not cause a user to lose their identity, social graph, or content.
+* **IDの提供:** ユーザは、サービス間で安定したグローバルIDを作成できるようにする必要があります。これらのIDは、コンテンツへのリンクが安定するように、ほとんど変更されないことが望ましいです。
+* **公開鍵の配布:** 分散システムは、データの信頼性を証明し、エンドツーエンドのプライバシーを提供するために、暗号に依存しています。IDシステムでは、強力なセキュリティで公開鍵を公開しなければなりません。
+* **鍵のローテーション:** ユーザーは、自分のIDを崩すことなく、鍵の素材をローテーションできる必要があります。
+* **サービスの発見:** ユーザーと対話するために、アプリケーションは、与えられたユーザーが使用中のサービスを発見できなければいけません。
+* **ユーザビリティ:** ユーザは、人間が読みやすく、覚えやすい名前を持つべきである。
+* **ポータビリティ:** IDはサービス間で移植可能であるべきです。プロバイダを変更しても、ユーザーのID、ソーシャルグラフ、コンテンツが失われるようなことがあってはいけません。
 
-Adopting this system should give applications the tools for end-to-end encryption, signed user data, service sign in, and general interoperation.
+このシステムを採用することで、アプリケーションはエンドツーエンドの暗号化、署名付きユーザーデータ、サービスサインイン、一般的な相互運用のためのツールを得ることができます。
 
-## Identifiers
+## 識別子
 
-We use two interrelated forms of identifiers: the _handle_ and the _DID_. Handles are DNS names while DIDs are an [emerging W3C standard](https://www.w3.org/TR/did-core/) which act as secure & stable IDs.
+私たちは、*handle*と*DID*という、相互に関連する2つの形式の識別子を使用しています。ハンドルはDNS名で、DIDは[emerging W3C standard](https://www.w3.org/TR/did-core/)で、安全で安定したIDとして機能します。
 
-The following are all valid user identifiers:
+以下は、すべて有効なユーザーIDです。
 
 <pre><code>@alice.host.com
 at://alice.host.com
 at://did:plc:bv6ggog3tya2z3vxsub7hnal
 </code></pre>
 
-The relationship between them can be visualized as:
+以下のように、両者の関係を可視化できます。
 
 <pre style="line-height: 1.2;"><code>┌──────────────────┐                 ┌───────────────┐ 
 │ DNS name         ├──resolves to──→ │ DID           │
@@ -47,30 +47,30 @@ The relationship between them can be visualized as:
                                     └───────────────┘
 </code></pre>
 
-The DNS handle is a user-facing identifier — it should be shown in UIs and promoted as a way to find users. Applications resolve handles to DIDs and then use the DID as the stable canonical identifier. The DID can then be securely resolved to a DID document which includes public keys and user services.
+DNSハンドルはユーザー向けの識別子であり、UIに表示され、ユーザーを見つけるための方法として宣伝されるべきです。アプリケーションはハンドルをDIDに解決し、DIDを安定した正規の識別子として使用します。DIDは、公開鍵やユーザーサービスを含むDIDドキュメントに安全に解決することができます。
 
 <table>
   <tr>
-   <td><strong>Handles</strong>
+   <td><strong>ハンドル</strong>
    </td>
-   <td>Handles are DNS names. They are resolved using the <a href="/lexicons/com-atproto-handle">com.atproto.handle.resolve()</a> XRPC method and should be confirmed by a matching entry in the DID document.
+   <td>ハンドルはDNS名です。これらは <a href="/lexicons/com-atproto-handle.md">com.atproto.handle.resolve()</a> XRPCメソッドを使用して解決され、DIDドキュメントの一致するエントリで確認する必要があります。
    </td>
   </tr>
   <tr>
    <td><strong>DIDs</strong>
    </td>
-   <td>DIDs are an emerging <a href="https://www.w3.org/TR/did-core/">W3C standard</a> for providing stable & secure IDs. They are used as stable, canonical IDs of users.
+   <td>DIDは、安定した安全なIDを提供するための <a href="https://www.w3.org/TR/did-core/">W3Cの新しい標準</a> です。ユーザーの安定した正規のIDとして使用されます。
    </td>
   </tr>
   <tr>
-   <td><strong>DID Documents</strong>
+   <td><strong>DIDドキュメント</strong>
    </td>
    <td>
-    DID Documents are standardized objects which are hosted by DID registries. They include the following information:
+    DIDドキュメントは、DIDレジストリによってホストされる標準化されたオブジェクトです。以下の情報が含まれます:
     <ul>
-      <li>The handle associated with the DID.</li>
-      <li>The signing key.</li>
-      <li>The URL of the user’s PDS.</li>
+      <li>DIDに関連するハンドル</li>
+      <li>署名鍵</li>
+      <li>ユーザのPDSのURL</li>
     </ul>
    </td>
   </tr>
@@ -78,25 +78,26 @@ The DNS handle is a user-facing identifier — it should be shown in UIs and pro
 
 ## DID Methods
 
-The [DID standard](https://www.w3.org/TR/did-core/) supports custom "methods" of publishing and resolving DIDs to the [DID Document](https://www.w3.org/TR/did-core/#core-properties). A variety of existing methods [have been published](https://w3c.github.io/did-spec-registries/#did-methods) so we must establish criteria for inclusion in this proposal:
+[DID標準](https://www.w3.org/TR/did-core/)は、[DIDドキュメント](https://www.w3.org/TR/did-core/#core-properties)にDIDを公開し解決するカスタム「methods」をサポートしています。様々な既存の方法が[公開されている](https://w3c.github.io/did-spec-registries/#did-methods)ので、この提案に含めるための基準を確立する必要があります。
 
-- **Strong consistency.** For a given DID, a resolution query should produce only one valid document at any time. (In some networks, this may be subject to probabilistic transaction finality.)
-- **High availability**. Resolution queries must succeed reliably.
-- **Online API**. Clients must be able to publish new DID documents through a standard API.
-- **Secure**. The network must protect against attacks from its operators, a MITM, and other users.
-- **Low cost**. Creating and updating DID documents must be affordable to services and users.
-- **Key rotation**. Users must be able to rotate keypairs without losing their identity.
-- **Decentralized governance**. The network should not be governed by a single stakeholder; it must be an open network or a consortium of providers.
 
-At present, none of the DID methods meet our standards fully. **Therefore we have chosen to support [did-web](https://w3c-ccg.github.io/did-method-web/) and a temporary method we've created called [did-placeholder](/specs/did-plc.md).** We expect this situation to evolve as new solutions emerge.
+- **強力な一貫性:** 与えられたDIDに対して、解決クエリは常に1つの有効な文書しか生成しないようにします。(ネットワークによっては、これは確率的なトランザクションの終端性に従うかもしれません)。
+- **高い可用性:** 解決クエリは確実に成功しなければなりません。
+- **オンラインAPI:** クライアントは、標準的なAPIを通じて新しいDIDドキュメントを公開できなければなりません。
+- **セキュア:** ネットワークは、そのオペレータ、MITM、および他のユーザーからの攻撃から保護する必要があります。
+- **低コスト:** DIDドキュメントの作成と更新は、サービスやユーザーにとって手頃な価格でなければなりません。
+- **鍵のローテーション:** ユーザは自分のアイデンティティを失うことなくキーペアをローテーションすることができなければなりません。
+- **分権型ガバナンス:** ネットワークは単一のステークホルダーによって統治されるべきではなく、オープンネットワークまたはプロバイダーのコンソーシアムである必要があります。
+
+現在のところ、どのDIDメソッドも我々の基準を完全に満たしていません。**したがって、私たちは[did-web](https://w3c-ccg.github.io/did-method-web/)と、私たちが作成した[did-placeholder](/specs/did-plc.md)という仮のメソッドをサポートすることにしました。**この状況は、新しいソリューションが現れるにつれて進化していくことを期待しています。
 
 ## Handle Resolution
 
-Handles in ATP are domain names which resolve to a DID, which in turn resolves to a DID Document containing the user's signing pubkey and hosting service.
+ATPのハンドルは、DIDに解決するドメイン名であり、DIDは、ユーザーの署名パブキーとホスティングサービスを含むDID Documentに解決します。
 
-Handle resolution uses the [`com.atproto.handle.resolve`](/lexicons/com-atproto-handle.md) XRPC method. The method call should be sent to the server identified by the handle, and the handle should be passed as a parameter.
+ハンドル解決には [`com.atproto.handle.resolve`](/lexicons/com-atproto-handle.md) XRPCメソッドを使用します。メソッド呼び出しはハンドルで識別されるサーバーに送信され、ハンドルはパラメータとして渡される必要があります。
 
-Here is the algorithm in pseudo-typescript:
+以下は、擬似typescriptによるアルゴリズムです:
 
 ```typescript
 async function resolveHandle(handle: string) {
