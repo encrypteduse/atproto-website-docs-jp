@@ -5,7 +5,7 @@ summary: ATP Lexicon - Handle Schemas
 
 # com.atproto.handle Lexicon
 
-ATPのハンドルネーム（ユーザー名）に関連する定義です。
+Definitions related to handles (aka usernames) in ATP.
 
 <!-- START lex generated content. Please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION! INSTEAD RE-RUN lex TO UPDATE -->

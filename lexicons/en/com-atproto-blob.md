@@ -5,7 +5,7 @@ summary: ATP Lexicon - Blob Schemas
 
 # com.atproto.blob Lexicon
 
-ATPサービスにおけるblob管理に関する定義です。(「blob」とは、画像や動画などの非構造化データのことです。)
+Definitions related to blob management in ATP services. ("Blobs" are unstructured data such as images or videos.)
 
 <!-- START lex generated content. Please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION! INSTEAD RE-RUN lex TO UPDATE -->

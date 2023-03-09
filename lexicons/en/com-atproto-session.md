@@ -5,7 +5,7 @@ summary: ATP Lexicon - Session Schemas
 
 # com.atproto.session Lexicon
 
-ATPのセッションマネジメントに関連する定義です。
+Definitions related to session-management in ATP.
 
 <!-- START lex generated content. Please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION! INSTEAD RE-RUN lex TO UPDATE -->

@@ -5,7 +5,7 @@ summary: Bluesky Lexicon - Feed Schemas
 
 # app.bsky.feed Lexicon
 
-Blueskyに掲載されたコンテンツやアクティビティに関する定義です。
+Definitions related to content & activity published in Bluesky.
 
 <!-- START lex generated content. Please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION! INSTEAD RE-RUN lex TO UPDATE -->

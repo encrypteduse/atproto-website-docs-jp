@@ -5,7 +5,7 @@ summary: ATP Lexicon - Repo Schemas
 
 # com.atproto.repo Lexicon
 
-ATPにおけるリポジトリに関連する定義。
+Definitions related to repositories in ATP.
 
 <!-- START lex generated content. Please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION! INSTEAD RE-RUN lex TO UPDATE -->
@@ -519,7 +519,7 @@ ATPにおけるリポジトリに関連する定義。
 
 ## com.atproto.repo.strongRef
 
-コンテンツハッシュのフィンガープリントを持つURIです。
+A URI with a content-hash fingerprint.
 
 ```json
 {

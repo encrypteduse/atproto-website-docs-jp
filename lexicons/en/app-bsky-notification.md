@@ -5,7 +5,7 @@ summary: Bluesky Lexicon - Notification Schemas
 
 # app.bsky.notification Lexicon
 
-通知に関する定義です。
+Definitions related to notifications.
 
 <!-- START lex generated content. Please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION! INSTEAD RE-RUN lex TO UPDATE -->

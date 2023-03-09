@@ -5,7 +5,7 @@ summary: Bluesky Lexicon - Graph Schemas
 
 # app.bsky.graph Lexicon
 
-Blueskyのソーシャルグラフに関連する定義です。
+Definitions related to the social graph in Bluesky.
 
 <!-- START lex generated content. Please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION! INSTEAD RE-RUN lex TO UPDATE -->

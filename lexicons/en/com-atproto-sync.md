@@ -5,7 +5,7 @@ summary: ATP Lexicon - Sync Schemas
 
 # com.atproto.sync Lexicon
 
-ATPのクロスサーバー同期に関連する定義です。
+Definitions related to cross-server sync in ATP.
 
 <!-- START lex generated content. Please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION! INSTEAD RE-RUN lex TO UPDATE -->

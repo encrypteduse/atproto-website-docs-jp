@@ -5,7 +5,7 @@ summary: Bluesky Lexicon - Actor Schemas
 
 # app.bsky.actor Lexicon
 
-Blueskyにおけるユーザーの総称である「actor」に関連する定義です。
+Definitions related to "actors," a general term for users in Bluesky.
 
 <!-- START lex generated content. Please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION! INSTEAD RE-RUN lex TO UPDATE -->
@@ -326,7 +326,7 @@ Blueskyにおけるユーザーの総称である「actor」に関連する定�
 
 ## app.bsky.actor.ref
 
-ネットワーク上のアクターへの参照です。
+A reference to an actor in the network.
 
 ```json
 {

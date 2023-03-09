@@ -5,7 +5,7 @@ summary: Bluesky Lexicon - System Schemas
 
 # app.bsky.system Lexicon
 
-システムデータに関連する定義で、コア定義に使用されることを意図している場合が多いです。
+Definitions related to system data, often meant to be used for core definitions.
 
 <!-- START lex generated content. Please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION! INSTEAD RE-RUN lex TO UPDATE -->

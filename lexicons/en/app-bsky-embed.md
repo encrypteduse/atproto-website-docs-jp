@@ -5,7 +5,7 @@ summary: Bluesky Lexicon - Embed Schemas
 
 # app.bsky.embed Lexicon
 
-他のレコードに埋め込まれたコンテンツ（例：投稿のリンクや画像）である「embed」に関する定義です。
+Definitions related to "embeds," content which is embedded within other records (e.g. links or images in posts).
 
 <!-- START lex generated content. Please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION! INSTEAD RE-RUN lex TO UPDATE -->

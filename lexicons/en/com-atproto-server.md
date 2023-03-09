@@ -5,7 +5,7 @@ summary: ATP Lexicon - Server Schemas
 
 # com.atproto.server Lexicon
 
-ATPのサーバー動作に関連する定義です。
+Definitions related to server behaviors in ATP.
 
 <!-- START lex generated content. Please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION! INSTEAD RE-RUN lex TO UPDATE -->

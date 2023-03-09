@@ -5,7 +5,7 @@ summary: ATP Lexicon - Account Schemas
 
 # com.atproto.account Lexicon
 
-ATPサービスにおけるアカウント管理に関する定義です。
+Definitions related to account-management in ATP services.
 
 <!-- START lex generated content. Please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION! INSTEAD RE-RUN lex TO UPDATE -->
