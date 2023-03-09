@@ -65,7 +65,7 @@ DIDs are unique global identifiers which strongly identify repositories. They ar
 ATP supports two DID methods:
 
 - [Web (`did:web`)](https://w3c-ccg.github.io/did-method-web/). Should be used only when the user is "self-hosting" and therefore directly controls the domain name & server. May also be used during testing.
-- [Placeholder (`did:plc`)](/specs/did-plc). A method developed in conjunction with ATP to provide global secure IDs which are host-independent.
+- [Placeholder (`did:plc`)](/specs/did-plc.md). A method developed in conjunction with ATP to provide global secure IDs which are host-independent.
 
 DIDs resolve to "DID Documents" which provide the address of the repo's host and the public key used to sign the repo's updates.
 
@@ -255,7 +255,7 @@ ATP uses dollar (`$`) prefixed fields as system fields. The following fields are
 
 ## Client-to-server API
 
-The client-to-server API drives communication between a client application and the user's PDS. The APIs are dictated by the lexicons implemented by the PDS. It's recommended that every PDS support the full [atproto.com lexicon](/lexicons/atproto-com). Application-level lexicons such as [bsky.app](/lexicons/bsky-app) are also recommended.
+The client-to-server API drives communication between a client application and the user's PDS. The APIs are dictated by the lexicons implemented by the PDS. It's recommended that every PDS support the full [atproto.com lexicon](/lexicons/atproto-com.md). Application-level lexicons such as [bsky.app](/lexicons/bsky-app.md) are also recommended.
 
 ### Authentication
 
@@ -265,16 +265,16 @@ The client-to-server API drives communication between a client application and t
 
 The com.atproto.* lexicons provides the following behaviors:
 
-- [com.atproto.server](/lexicons/com-atproto-server). Server information.
-- [com.atproto.session](/lexicons/com-atproto-session). Session management.
-- [com.atproto.account](/lexicons/com-atproto-account). Account management.
-- [com.atproto.handle](/lexicons/com-atproto-handle). Handle resolution.
-- [com.atproto.repo](/lexicons/com-atproto-repo). Repo CRUD operations.
-- [com.atproto.sync](/lexicons/com-atproto-sync). Repo sync.
+- [com.atproto.server](/lexicons/com-atproto-server.md). Server information.
+- [com.atproto.session](/lexicons/com-atproto-session.md). Session management.
+- [com.atproto.account](/lexicons/com-atproto-account.md). Account management.
+- [com.atproto.handle](/lexicons/com-atproto-handle.md). Handle resolution.
+- [com.atproto.repo](/lexicons/com-atproto-repo.md). Repo CRUD operations.
+- [com.atproto.sync](/lexicons/com-atproto-sync.md). Repo sync.
 
 ### Additional lexicons
 
-For ATP to be practically useful, it needs to support a variety of sophisticated queries and behaviors. While these sophisticated behaviors could be implemented on the user device, doing so would perform more slowly than on the server. Therefore, the PDS is expected to implement lexicons which provide higher-level APIs. The reference PDS created by Bluesky implements the [bsky.app lexicon](/lexicons/bsky-app).
+For ATP to be practically useful, it needs to support a variety of sophisticated queries and behaviors. While these sophisticated behaviors could be implemented on the user device, doing so would perform more slowly than on the server. Therefore, the PDS is expected to implement lexicons which provide higher-level APIs. The reference PDS created by Bluesky implements the [bsky.app lexicon](/lexicons/bsky-app.md).
 
 ## Server-to-server API
 

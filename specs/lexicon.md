@@ -16,7 +16,7 @@ def-id    = alpha *( alpha / number )
 uri       = 'lex:' nsid ['#' def-id]
 ```
 
-`nsid` is defined in the [NSID spec](/specs/nsid).
+`nsid` is defined in the [NSID spec](/specs/nsid.md).
 
 The `def-id` maps to the keys of the `defs` subobject within a document. If no `def-id` is specified, the `main` definition is referenced.
 

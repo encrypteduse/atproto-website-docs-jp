@@ -9,13 +9,13 @@ tldr:
 
 # Applications model
 
-Applications on the AT Protocol connect to the user's Personal Data Server (PDS) to access their account. Once a session is established, the app can use the [lexicons](./lexicon) implemented by the PDS to drive behaviors.
+Applications on the AT Protocol connect to the user's Personal Data Server (PDS) to access their account. Once a session is established, the app can use the [lexicons](./lexicon.md) implemented by the PDS to drive behaviors.
 
 In this guide, we'll step through a couple of common patterns (with simple code examples) to help you develop an intuition about this. All APIs shown below are generated using Lexicon's code-generator CLI.
 
 ## Signing in
 
-Sign-in and authentication is a simple session-oriented process. The [com.atproto.session lexicon](/lexicons/com-atproto-session) includes APIs for creating and managing these sessions.
+Sign-in and authentication is a simple session-oriented process. The [com.atproto.session lexicon](/lexicons/com-atproto-session.md) includes APIs for creating and managing these sessions.
 
 ```typescript
 // create an API instance with my PDS

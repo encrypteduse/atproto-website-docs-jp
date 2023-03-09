@@ -15,13 +15,13 @@ No. ATP is a [federated protocol](https://en.wikipedia.org/wiki/Federation_(info
 
 [ActivityPub](https://en.wikipedia.org/wiki/ActivityPub) is a federated social networking technology popularized by [Mastodon](https://joinmastodon.org/).
 
-Account portability is the major reason why we chose to build a separate protocol. We consider portability to be crucial because it protects users from sudden bans, server shutdowns, and policy disagreements. Our solution for portability requires both [signed data repositories](/guides/data-repos) and [DIDs](/guides/identity), neither of which are easy to retrofit into ActivityPub. The migration tools for ActivityPub are comparatively limited; they require the original server to provide a redirect and cannot migrate the user's previous data.
+Account portability is the major reason why we chose to build a separate protocol. We consider portability to be crucial because it protects users from sudden bans, server shutdowns, and policy disagreements. Our solution for portability requires both [signed data repositories](/guides/data-repos.md) and [DIDs](/guides/identity.md), neither of which are easy to retrofit into ActivityPub. The migration tools for ActivityPub are comparatively limited; they require the original server to provide a redirect and cannot migrate the user's previous data.
 
 Other smaller differences include: a different viewpoint about how schemas should be handled, a preference for domain usernames over AP’s double-@ email usernames, and the goal of having large scale search and discovery (rather than the hashtag style of discovery that ActivityPub favors).
 
 ## Why create Lexicon instead of using JSON-LD or RDF?
 
-ATP exchanges data and RPC commands across organizations. For the data and RPC to be useful, the software needs to correctly handle schemas created by separate teams. This is the purpose of [Lexicon](/guides/lexicon).
+ATP exchanges data and RPC commands across organizations. For the data and RPC to be useful, the software needs to correctly handle schemas created by separate teams. This is the purpose of [Lexicon](/guides/lexicon.md).
 
 We want engineers to feel comfortable using and creating new schemas, and we want developers to enjoy the DX of the system. Lexicon helps us produce strongly typed APIs which are extremely familiar to developers and which provides a variety of runtime correctness checks (which are vital in distributed systems).
 
@@ -31,9 +31,9 @@ We looked very closely at using RDF but just didn't love the DX or the tooling i
 
 ## What is “XRPC,” and why not use ___?
 
-[XRPC](/specs/xrpc) is HTTP with some added conventions.
+[XRPC](/specs/xrpc.md) is HTTP with some added conventions.
 
-XRPC uses [Lexicon](/guides/lexicon) to describe HTTP calls and maps them to `/xrpc/{methodId}`. For example, this API call:
+XRPC uses [Lexicon](/guides/lexicon.md) to describe HTTP calls and maps them to `/xrpc/{methodId}`. For example, this API call:
 
 ```typescript
 await api.com.atproto.repo.listRecords({

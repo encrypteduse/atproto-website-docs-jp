@@ -15,19 +15,19 @@ Users are identified by domain names in AT Protocol. These domains map to crypto
 
 ## Data repositories
 
-User data is exchanged in [signed data repositories](/guides/data-repos). These repositories are collections of records which include posts, comments, likes, follows, media blobs, etc.
+User data is exchanged in [signed data repositories](/guides/data-repos.md). These repositories are collections of records which include posts, comments, likes, follows, media blobs, etc.
 
 ![Data repos](/img/data-repos.jpg)
 
 ## Federation
 
-ATP syncs the repositories in a federated networking model. Federation was chosen to ensure the network is convenient to use and reliably available. Commands are sent between servers using [HTTPS + XRPC](/specs/xrpc).
+ATP syncs the repositories in a federated networking model. Federation was chosen to ensure the network is convenient to use and reliably available. Commands are sent between servers using [HTTPS + XRPC](/specs/xrpc.md).
 
 ![Federation](/img/federation.jpg)
 
 ## Interoperation
 
-A global schemas network called [Lexicon](/specs/lexicon) is used to unify the names and behaviors of the calls across the servers. Servers implement "lexicons" to support featuresets, including the core [ATP Lexicon](/lexicons/atproto-com) for syncing user repositories and the [Bsky Lexicon](/lexicons/bsky-app) to provide basic social behaviors.
+A global schemas network called [Lexicon](/specs/lexicon.md) is used to unify the names and behaviors of the calls across the servers. Servers implement "lexicons" to support featuresets, including the core [ATP Lexicon](/lexicons/atproto-com.md) for syncing user repositories and the [Bsky Lexicon](/lexicons/bsky-app.md) to provide basic social behaviors.
 
 ![Interop](/img/interop.jpg)
 
@@ -56,7 +56,7 @@ As with Web search engines, users are free to select their indexers. Each feed, 
 
 We assume that a Personal Data Server may fail at any time, either by going offline in its entirety, or by ceasing service for specific users. ATP's goal is to ensure that a user can migrate their account to a new PDS without the server's involvement.
 
-User data is stored in [signed data repositories](/guides/data-repos) and verified by [DIDs](/guides/identity). DIDs are essentially registries of user certificates, similar in some ways to the TLS certificate system. They are expected to be secure, reliable, and independent of the users' PDS.
+User data is stored in [signed data repositories](/guides/data-repos.md) and verified by [DIDs](/guides/identity.md). DIDs are essentially registries of user certificates, similar in some ways to the TLS certificate system. They are expected to be secure, reliable, and independent of the users' PDS.
 
 ![DID Documents](/img/did-doc.jpg)
 
@@ -83,14 +83,14 @@ The base layer of ATP (Personal Data Repositories and Federated Networking) crea
 
 Five primary specs comprise the v1 of the @-protocol. These specs are:
 
-- [Authenticated Transfer Protocol](/specs/atp)
-- [Cross-system RPC (XRPC)](/specs/xrpc)
-- [Lexicon Schemas](/specs/lexicon)
-- [NameSpaced IDs (NSIDs)](/specs/nsid)
-- [DID:Placeholder (did:plc)](/specs/did-plc)
+- [Authenticated Transfer Protocol](/specs/atp.md)
+- [Cross-system RPC (XRPC)](/specs/xrpc.md)
+- [Lexicon Schemas](/specs/lexicon.md)
+- [NameSpaced IDs (NSIDs)](/specs/nsid.md)
+- [DID:Placeholder (did:plc)](/specs/did-plc.md)
 
 These specs can be organized into three layers of dependency:
 
 ![Spec diagram](/img/spec-diagram.jpg)
 
-From here you can continue reading the [guides and specs](/docs).
+From here you can continue reading the [guides and specs](/docs.md).

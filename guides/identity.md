@@ -88,13 +88,13 @@ The [DID standard](https://www.w3.org/TR/did-core/) supports custom "methods" of
 - **Key rotation**. Users must be able to rotate keypairs without losing their identity.
 - **Decentralized governance**. The network should not be governed by a single stakeholder; it must be an open network or a consortium of providers.
 
-At present, none of the DID methods meet our standards fully. **Therefore we have chosen to support [did-web](https://w3c-ccg.github.io/did-method-web/) and a temporary method we've created called [did-placeholder](/specs/did-plc).** We expect this situation to evolve as new solutions emerge.
+At present, none of the DID methods meet our standards fully. **Therefore we have chosen to support [did-web](https://w3c-ccg.github.io/did-method-web/) and a temporary method we've created called [did-placeholder](/specs/did-plc.md).** We expect this situation to evolve as new solutions emerge.
 
 ## Handle Resolution
 
 Handles in ATP are domain names which resolve to a DID, which in turn resolves to a DID Document containing the user's signing pubkey and hosting service.
 
-Handle resolution uses the [`com.atproto.handle.resolve`](/lexicons/com-atproto-handle) XRPC method. The method call should be sent to the server identified by the handle, and the handle should be passed as a parameter.
+Handle resolution uses the [`com.atproto.handle.resolve`](/lexicons/com-atproto-handle.md) XRPC method. The method call should be sent to the server identified by the handle, and the handle should be passed as a parameter.
 
 Here is the algorithm in pseudo-typescript:
 

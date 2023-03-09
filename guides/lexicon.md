@@ -12,7 +12,7 @@ tldr:
 
 Lexicon is a schema system used to define RPC methods and record types. Every Lexicon schema is written in JSON and uses [JSON-Schema](https://json-schema.org/) to define constraints.
 
-The schemas are identified using [NSIDs](/specs/nsid) which are a reverse-DNS format. Here are some example methods:
+The schemas are identified using [NSIDs](/specs/nsid.md) which are a reverse-DNS format. Here are some example methods:
 
 ```typescript
 com.atproto.repo.getRecord()
@@ -72,7 +72,7 @@ Notice the structure differs depending on the `type`. The meanings of the type a
 
 ## RPC methods
 
-AT Protocol's RPC system, [XRPC](/specs/xrpc), is essentially a thin wrapper around HTTPS. Its purpose is to apply the Lexicon to HTTPS. A call to:
+AT Protocol's RPC system, [XRPC](/specs/xrpc.md), is essentially a thin wrapper around HTTPS. Its purpose is to apply the Lexicon to HTTPS. A call to:
 
 ```typescript
 com.example.getProfile()
@@ -278,4 +278,4 @@ If a schema must change a previously-published constraint, it should be publishe
 
 Schemas are designed to be machine-readable and network-accessible. While it is not currently _required_ that a schema is available on the network, it is strongly advised to publish schemas so that a single canonical & authoritative representation is available to consumers of the method.
 
-To fetch a schema, a request is sent via the XRPC [`getSchema`](/specs/xrpc#getschema) method. This request is sent to the authority of the NSID.
+To fetch a schema, a request is sent via the XRPC [`getSchema`](/specs/xrpc#getschema.md) method. This request is sent to the authority of the NSID.
