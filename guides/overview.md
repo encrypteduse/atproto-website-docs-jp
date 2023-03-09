@@ -1,87 +1,88 @@
 ---
-title: Protocol Overview
-summary: An introduction to the AT Protocol.
+title: プロトコルの概要
+summary: AT Protocolについて紹介します。
 ---
 
-# Protocol Overview
+# AT Protocolの概要
 
-The **Authenticated Transfer Protocol**, aka **ATP**, is a protocol for large-scale distributed social applications. This document will introduce you to the ideas behind the AT Protocol.
+**Authenticated Transfer Protocol**、通称**ATP**は、大規模な分散型ソーシャルアプリケーションのためのプロトコルです。本資料では、ATプロトコルの背景にある考え方を紹介します。
 
-## Identity
+## 同一性
 
-Users are identified by domain names in AT Protocol. These domains map to cryptographic URLs which secure the user's account and its data.
+ユーザーは、ATプロトコルのドメイン名で識別されます。これらのドメインは、ユーザーのアカウントとそのデータを保護する暗号化URLにマッピングされます。
 
 ![Identities](/img/identities.jpg)
 
-## Data repositories
+## データリポジトリ
 
-User data is exchanged in [signed data repositories](/guides/data-repos.md). These repositories are collections of records which include posts, comments, likes, follows, media blobs, etc.
+ユーザーデータは、[署名付きデータリポジトリ](/guides/data-repos.md)で交換されます。これらのリポジトリは、投稿、コメント、いいね！、フォロー、メディアブロブなどを含むレコードの集合体です。
 
 ![Data repos](/img/data-repos.jpg)
 
-## Federation
+## フェデレーション（連合）
 
-ATP syncs the repositories in a federated networking model. Federation was chosen to ensure the network is convenient to use and reliably available. Commands are sent between servers using [HTTPS + XRPC](/specs/xrpc.md).
+ATPは、フェデレーテッド・ネットワーキング・モデルでリポジトリを同期します。フェデレーションは、ネットワークが便利に使え、確実に利用できるようにするために選ばれました。コマンドは、[HTTPS + XRPC](/specs/xrpc.md)を使用してサーバー間で送信されます。
 
 ![Federation](/img/federation.jpg)
 
-## Interoperation
+## 相互運用
 
-A global schemas network called [Lexicon](/specs/lexicon.md) is used to unify the names and behaviors of the calls across the servers. Servers implement "lexicons" to support featuresets, including the core [ATP Lexicon](/lexicons/atproto-com.md) for syncing user repositories and the [Bsky Lexicon](/lexicons/bsky-app.md) to provide basic social behaviors.
+[Lexicon](/specs/lexicon.md)と呼ばれるグローバルなスキーマネットワークは、サーバー間で呼び出しの名前と動作を統一するために使用されています。サーバーは、ユーザーリポジトリを同期するためのコアな[ATP Lexicon](/lexicons/atproto-com.md) や、基本的なソーシャル動作を提供するための [Bsky Lexicon](/lexicons/bsky-app.md) など、機能セットをサポートする「レキシコン（辞書）」を実装します。
 
 ![Interop](/img/interop.jpg)
 
-While the Web exchanges documents, the AT Protocol exchanges schematic and semantic information, enabling the software from different orgs to understand each others' data. This gives ATP clients freedom to produce user interfaces independently of the servers, and removes the need to exchange rendering code (HTML/JS/CSS) while browsing content.
+Webがドキュメントを交換するのに対し、ATプロトコルは回路図とセマンティック情報を交換し、異なる組織のソフトウェアが互いのデータを理解することを可能にします。これにより、ATPクライアントはサーバーに依存しないユーザーインターフェースを自由に作成できるようになり、コンテンツを閲覧する際にレンダリングコード（HTML/JS/CSS）をやり取りする必要がなくなります。
 
-## Achieving scale
+## スケールの実現
 
-ATP distinguishes between "small-world" vs "big-world" networking. *Small-world* networking encompasses inter-personal activity while *big-world* networking aggregates activity outside of the user's personal interactions. 
+ATPでは、「スモールワールド」と「ビッグワールド」のネットワーキングを区別しています。*スモールワールド*ネットワーキングは個人間の活動を包含し、*ビッグワールド*ネットワーキングはユーザーの個人的な交流の外にある活動を集約します。
 
-* **Small-world**: delivery of events targeted at specific users such as mentions, replies, and DMs, and sync of datasets according to follow graphs.
-* **Big-world**: large-scale metrics (likes, reposts, followers), content discovery (algorithms), and user search.
+* **スモールワールド**: メンション、リプライ、DMなど、特定のユーザーを対象としたイベントの配信、フォローグラフに応じたデータセットの同期など。
+* **ビッグワールド**: 大規模な指標（いいね、リポスト、フォロワー）、コンテンツの発見（アルゴリズム）、ユーザー検索など。
 
-Personal Data Servers (PDS) are responsible for small-world networking while indexing services separately crawl the network to provide big-world networking.
+パーソナルデータサーバー（PDS）はスモールワールドのネットワークを担当し、インデックスサービスは別途ネットワークをクロールしてビッグワールドのネットワークを提供します。
 
 ![Small world, Big world](/img/small-big-world.jpg)
 
-The small-world/big-world distinction is intended to achieve scale as well as a high degree of user-choice. 
+スモールワールドとビッグワールドの区別は、スケール感だけでなく、ユーザーの高い選択性を実現することを意図しています。
 
-## Algorithmic choice
+## アルゴリズム的な選択
 
-As with Web search engines, users are free to select their indexers. Each feed, discovery section, or search interface is integrated into the PDS while being served from a third party service.
+ウェブ検索エンジンと同様に、ユーザーは自由にインデクサを選択することができます。各フィード、ディスカバリーセクション、検索インターフェースは、サードパーティーのサービスから提供されながら、PDSに統合されています。
 
 ![Algorithmic choice](/img/algorithmic-choice.jpg)
 
-## Account portability
+## アカウントのポータビリティ
 
-We assume that a Personal Data Server may fail at any time, either by going offline in its entirety, or by ceasing service for specific users. ATP's goal is to ensure that a user can migrate their account to a new PDS without the server's involvement.
+パーソナルデータサーバー（PDS）は、全体がオフラインになったり、特定のユーザーに対するサービスを停止したりと、いつでも障害が発生する可能性があると想定しています。ATPの目標は、サーバーの関与なしに、ユーザーが自分のアカウントを新しいPDSに移行できるようにすることです。
 
-User data is stored in [signed data repositories](/guides/data-repos.md) and verified by [DIDs](/guides/identity.md). DIDs are essentially registries of user certificates, similar in some ways to the TLS certificate system. They are expected to be secure, reliable, and independent of the users' PDS.
+ユーザーデータは[署名付きデータリポジトリ](/guides/data-repos.md)に保存され、[DIDs](/guides/identity.md)によって検証されます。DIDは、基本的にユーザー証明書のレジストリであり、TLS証明書システムに似ているところがあります。DIDは、安全で信頼性が高く、ユーザーのPDSから独立していることが期待されています。
 
 ![DID Documents](/img/did-doc.jpg)
 
-Each DID Document publishes two public keys: a signing key and a recovery key.
+各DIDドキュメントは、署名鍵と復元鍵の2つの公開鍵を公開します。
 
-* **Signing key**: Asserts changes to the DID Document *and* to the user's data repository.
-* **Recovery key**: Asserts changes to the DID Document; may override the signing key within a 72-hour window.
+* **署名鍵**: DID Documentの変更とユーザーのデータリポジトリへの変更を主張します。
+* **復元鍵**: 72時間以内であれば、署名鍵を上書きすることができます。
 
-The signing key is entrusted to the PDS so that it can manage the user's data, but the recovery key is saved by the user, e.g. as a paper key. This makes it possible for the user to update their account to a new PDS without the original host's help.
+署名鍵はPDSがユーザーのデータを管理できるように預けますが、復元鍵はたとえば印刷された鍵などとしてユーザーが保存します。これにより、ユーザーは元のホストの手を借りずに、新しいPDSにアカウントを更新することが可能になります。
+
 
 ![Account recovery](/img/recovery.jpg)
 
-A backup of the user’s data is persistently synced to their client as a backup (contingent on the disk space available). Should a PDS disappear without notice, the user should be able to migrate to a new provider by updating their DID Document and uploading the backup.
+ユーザーのデータのバックアップは、バックアップとしてクライアントに永続的に同期されます（利用可能なディスク容量に依存します）。PDSが予告なく消滅した場合、ユーザーはDIDドキュメントを更新し、バックアップをアップロードすることで、新しいプロバイダーに移行することができるはずです。
 
-## Speech, reach, and moderation
+## 発言・リーチ・節制
 
-ATP's model is that _speech_ and _reach_ should be two separate layers, built to work with each other. The “speech” layer should remain neutral, distributing authority and designed to ensure everyone has a voice. The “reach” layer lives on top, built for flexibility and designed to scale.
+ATPのモデルは、「スピーチ」と「リーチ」は2つの別々のレイヤーであるべきで、互いに協力し合うように構築されています。「スピーチ」レイヤーは中立的な立場を保ち、権威を分散させ、誰もが発言できるように設計されています。「リーチ」レイヤーはその上に位置し、柔軟性を備え、拡張できるように設計されています。
 
 ![Speech vs Reach](/img/speech-vs-reach.jpg)
 
-The base layer of ATP (Personal Data Repositories and Federated Networking) creates a common space for speech where everyone is free to participate, analogous to the Web where anyone can put up a website. The Indexing services then enable reach by aggregating content from the network, analogous to a search engine.
+ATPのベースレイヤー（パーソナルデータレポジトリとフェデレートネットワーキング）は、誰もが自由に参加できる言論のための共通の空間を作り出します。これは、誰でもウェブサイトを立ち上げることができるウェブに似ています。そして、インデックスサービスは、検索エンジンに例えられるように、ネットワークからコンテンツを集約することでリーチを可能にします。
 
 ## Specifications
 
-Five primary specs comprise the v1 of the @-protocol. These specs are:
+5つの主要な仕様が@-protocolのv1を構成しています。これらのスペックは以下の通りです。
 
 - [Authenticated Transfer Protocol](/specs/atp.md)
 - [Cross-system RPC (XRPC)](/specs/xrpc.md)
@@ -89,8 +90,9 @@ Five primary specs comprise the v1 of the @-protocol. These specs are:
 - [NameSpaced IDs (NSIDs)](/specs/nsid.md)
 - [DID:Placeholder (did:plc)](/specs/did-plc.md)
 
-These specs can be organized into three layers of dependency:
+これらのスペックは、依存関係の3つのレイヤーに整理することができます。
 
 ![Spec diagram](/img/spec-diagram.jpg)
 
-From here you can continue reading the [guides and specs](/docs.md).
+
+ここから先は、[ガイドと仕様書](/docs.md)にて読み進めることができます。

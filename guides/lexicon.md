@@ -1,44 +1,44 @@
 ---
 title: Lexicon
-summary: A schema-driven interoperability framework
+summary: スキーマ駆動型相互運用性フレームワーク
 tldr:
- - Lexicon is a global schema system
- - It uses reverse-DNS names like "com.example.ping()"
- - The definitions are mainly JSON-Schema documents
- - It's currently used for RPC methods and repo records
+ - Lexiconはグローバルなスキーマシステムです。
+ - "com.example.ping()"のような逆DNS名を使用します。
+ - 定義は主にJSONスキーマのドキュメントです。
+ - 現在はRPCメソッドとリポジトリ記録に使用されています。
 ---
 
-# Intro to Lexicon
+# Lexicon入門
 
-Lexicon is a schema system used to define RPC methods and record types. Every Lexicon schema is written in JSON and uses [JSON-Schema](https://json-schema.org/) to define constraints.
+Lexiconは、RPCメソッドとレコードタイプを定義するために使用されるスキーマシステムです。LexiconのスキーマはすべてJSONで記述され、[JSON-Schema](https://json-schema.org/)を用いて制約を定義します。
 
-The schemas are identified using [NSIDs](/specs/nsid.md) which are a reverse-DNS format. Here are some example methods:
+スキーマの識別には、逆DNS形式である[NSIDs](/specs/nsid.md)を使用します。以下にメソッドの例を示します:
 
-```typescript
+``` typescript
 com.atproto.repo.getRecord()
 com.atproto.handle.resolve()
 app.bsky.feed.getPostThread()
 app.bsky.notification.list()
 ```
 
-And here are some example record types:
+そして、レコードタイプの例を示します:
 
-```typescript
+``` typescript
 app.bsky.fed.post
 app.bsky.feed.like
 app.bsky.actor.profile
 app.bsky.graph.follow
 ```
 
-## Why is Lexicon needed?
+## Lexiconはなぜ必要なのか？
 
-Interoperability. An open network like ATP needs a way to agree on behaviors and semantics. Lexicon solves this while making it relatively simple for developers to introduce new schemas.
+相互運用性のためです。ATPのようなオープンネットワークでは、動作やセマンティクスに同意する方法が必要です。Lexiconは、開発者が新しいスキーマを導入するのを比較的簡単にしながら、これを解決します。
 
-Lexicon is not RDF. While RDF is effective at describing data, it is not ideal for enforcing schemas. Lexicon is easier to use because it doesn't need the generality that RDF provides. In fact, Lexicon's schemas enable code-generation with types and validation, which makes life much easier!
+LexiconはRDFではありません。RDFはデータを記述するのには有効ですが、スキーマを強制するのには適していません。LexiconはRDFが提供する一般性を必要としないため、より使いやすくなっています。実際、Lexiconのスキーマは、型や検証を伴うコード生成を可能にし、生活をより楽にしてくれるのです！
 
-## Schema format
+## スキーマの形式
 
-Schemas are JSON objects which follow this Typescript interface:
+Lexiconのスキーマは、下記のTypescriptのインターフェースに従ったJSONオブジェクトです。
 
 ```typescript
 interface LexiconDoc {
@@ -61,30 +61,30 @@ interface LexiconDoc {
 }
 ```
 
-Notice the structure differs depending on the `type`. The meanings of the type are:
+`type`プロパティの値によって構造が異なることに注意してください。プロパティのとりうる値は下表の通りです:
 
-|Type|Meaning|
+|設定値|説明|
 |-|-|
-|`query`|An XRPC "read" method (aka GET).|
-|`procedure`|An XRPC "modify" method (aka POST).|
-|`record`|An ATP repository record type.|
-|`token`|A declared identifier with no behaviors associated.|
+|`query`|XRPCの "read" メソッド（別名GET）を指します。|
+|`procedure`|XRPCの "modify" メソッド（別名POST）を指します。|
+|`record`|An ATP repository record type.　　ATPリポジトリのレコードタイプを指します。|
+|`token`|ビヘイビアが関連付けられていない宣言された識別子を指します。|
 
-## RPC methods
+## RPCメソッド
 
-AT Protocol's RPC system, [XRPC](/specs/xrpc.md), is essentially a thin wrapper around HTTPS. Its purpose is to apply the Lexicon to HTTPS. A call to:
+AT ProtocolのRPCシステムである[XRPC](/specs/xrpc.md)は、本質的にはHTTPSの薄いラッパーです。XRPCの目的は、LexiconをHTTPSに適用することです。
 
 ```typescript
 com.example.getProfile()
 ```
 
-is actually just an HTTP request:
+上記の呼び出しは、実際には下記のような単なるHTTPリクエストです:
 
 ```text
 GET /xrpc/com.example.getProfile
 ```
 
-The schemas establish valid query parameters, request bodies, and response bodies.
+XRPCのLexiconスキーマは、下記の要領で有効なクエリパラメータ、リクエストボディ、およびレスポンスボディを確立します。
 
 ```json
 {
@@ -110,18 +110,18 @@ The schemas establish valid query parameters, request bodies, and response bodie
 }
 ```
 
-With code-generation, these schemas become very easy to use:
+コード生成により、これらのスキーマは非常に使いやすくなっています:
 
 ```typescript
 await client.com.example.getProfile({user: 'bob.com'})
 // => {name: 'bob.com', did: 'did:plc:1234', displayName: '...', ...}
 ```
 
-## Record types
+## レコードタイプ
 
-Schemas define the possible values of a record. Every record has a "type" which maps to a schema and also establishes the URL of a record.
+スキーマは、レコードの設定可能値を定義します。すべてのレコードはスキーマに対応する "type" を持ち、レコードのURLも確立しています。
 
-For instance, this "follow" record:
+例えば、"follow" のレコードについて:
 
 ```json
 {
@@ -131,13 +131,13 @@ For instance, this "follow" record:
 }
 ```
 
-...would have a URL like:
+...下記のようなURLを持つことになります:
 
 ```text
 at://bob.com/com.example.follow/1234
 ```
 
-...and a schema like:
+...この場合のLexiconスキーマは下記のようになります:
 
 ```json
 {
@@ -156,11 +156,11 @@ at://bob.com/com.example.follow/1234
 }
 ```
 
-## Tokens
+## トークン
 
-Tokens declare global identifiers which can be used in data.
+トークンは、データ内で使用できるグローバルな識別子を宣言します。
 
-Let's say a record schema wanted to specify three possible states for a traffic light: 'red', 'yellow', and 'green'.
+例えば、以下のレコードのLexiconスキーマは信号機の状態を「赤」「黄」「緑」の3種類で指定することを示しています。
 
 ```json
 {
@@ -177,9 +177,9 @@ Let's say a record schema wanted to specify three possible states for a traffic 
 }
 ```
 
-This is perfectly acceptable, but it's not extensible. You could never add new states, like "flashing yellow" or "purple" (who knows, it could happen).
+このスキーマは完全に許容範囲ですが、拡張性がありません。点滅する黄色」や「紫色」のような新しい状態を追加することはできません（誰が拡張するかは分かりませんが、そのようなことは起こりうることです）。
 
-To add flexibility, you could remove the enum constraint and just document the possible values:
+柔軟性を持たせるために、enumの制約を取り除き、可能な値だけを文書化することができます。
 
 ```json
 {
@@ -199,9 +199,9 @@ To add flexibility, you could remove the enum constraint and just document the p
 }
 ```
 
-This isn't bad, but it lacks specificity. People inventing new values for state are likely to collide with each other, and there won't be clear documentation on each state.
+この方法は悪くありませんが、具体性に欠けます。stateプロパティの新しい値を考案する人たちは互いに衝突しそうだし、各stateプロパティの設定値に関する明確なドキュメンテーションもないでしょう。
 
-Instead, you can define Lexicon tokens for the values you use:
+代わりに、以下のように設定値に対してLexiconトークンを定義することができます。
 
 ```json
 {
@@ -224,7 +224,7 @@ Instead, you can define Lexicon tokens for the values you use:
 }
 ```
 
-This gives us unambiguous values to use in our trafficLight state. The final schema will still use flexible validation, but other teams will have more clarity on where the values originate from and how to add their own:
+これにより、"trafficLight" の "state" プロパティで使用するための明確な値が得られます。最終的なスキーマはまだ柔軟なバリデーションを使用しますが、他のチームは値の出所や独自の値を追加する方法をより明確にすることができます。
 
 ```json
 {
@@ -244,13 +244,13 @@ This gives us unambiguous values to use in our trafficLight state. The final sch
 }
 ```
 
-## Extensibility
+## 拡張性
 
-Records may introduce additional schemas using the `#/$ext` field. This is a standard field which encodes a map of schema NSIDs to "extension objects."
+レコードは `#/$ext` フィールドを使用して追加のスキーマを導入することができます。これはスキーマのNSIDと拡張オブジェクトのマップを符号化する標準的なフィールドです。
 
-Extension objects use two standard fields: `$required` and `$fallback`. The `$required` field tells us if the extension *must* be understood by the software to use it properly. Meanwhile the `$fallback` field gives us a string instructing the software how to tell the user what's wrong.
+拡張オブジェクトは、`$required`と`$fallback`の標準的なフィールドを使用します。`$required`フィールドは、その拡張機能を正しく使用するためにソフトウェアが理解しなければならないかどうかを示すものです。一方、`$fallback`フィールドは、ソフトウェアがユーザーに何が間違っているのかを伝える方法を指示する文字列を提供します。
 
-Here is an example of a record with an optional extension:
+以下は、オプションの拡張子を持つレコードの例です:
 
 ```json
 {
@@ -268,14 +268,17 @@ Here is an example of a record with an optional extension:
 }
 ```
 
-## Versioning
+## バージョン管理
 
-Once a schema is published, it can never change its constraints. Loosening a constraint (adding possible values) will cause old software to fail validation for new data, and tightening a constraint (removing possible values) will cause new software to fail validation for old data. As a consequence, schemas may only add optional constraints to previously unconstrained fields.
+スキーマは一度公開されると、その制約を変更することはできません。制約を緩める（可能な値を追加する）と、古いソフトウェアが新しいデータのバリデーションに失敗し、制約を厳しくする（可能な値を削除する）と、新しいソフトウェアが古いデータのバリデーションに失敗します。その結果、スキーマは、以前は制約がなかったフィールドにオプションの制約を追加することしかできなくなります。
 
-If a schema must change a previously-published constraint, it should be published as a new schema under a new NSID.
+スキーマが以前に公開された制約を変更しなければならない場合、新しいNSIDの下で新しいスキーマとして公開する必要があります。
 
 ## Schema distribution
+## スキーマの配布
 
-Schemas are designed to be machine-readable and network-accessible. While it is not currently _required_ that a schema is available on the network, it is strongly advised to publish schemas so that a single canonical & authoritative representation is available to consumers of the method.
+スキーマは、機械的に読むことができ、ネットワークからアクセスできるように設計されています。現在、スキーマがネットワーク上で利用可能であることは必須ではありませんが、スキーマを公開することで、メソッドの利用者が単一の正統的かつ権威ある表現を利用することができます。
 
 To fetch a schema, a request is sent via the XRPC [`getSchema`](/specs/xrpc#getschema.md) method. This request is sent to the authority of the NSID.
+
+スキーマを取得するには、XRPC [`getSchema`](/specs/xrpc#getschema.md) メソッドでリクエストを送信します。このリクエストはNSIDのオーソリティに送信されます。
