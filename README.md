@@ -1,0 +1,30 @@
+## guides:
+  - [Protocol Overview](/guides/overview)
+  - [Identity](/guides/identity)
+  - [Data Repositories](/guides/data-repos)
+  - [Lexicon](/guides/lexicon)
+  - [Applications](/guides/applications)
+  - [FAQ](/guides/faq)
+
+## specs:
+  - [ATP](/specs/atp)
+  - [URI Scheme](/specs/at-uri-scheme)
+  - [Lexicon Schemas](/specs/lexicon)
+  - [XRPC](/specs/xrpc)
+  - [NSID](/specs/nsid)
+  - [DID:Placeholder](/specs/did-plc)
+
+## lexicons:
+  - [com.atproto.account](/lexicons/com-atproto-account)
+  - [com.atproto.blob](/lexicons/com-atproto-blob)
+  - [com.atproto.handle](/lexicons/com-atproto-handle)
+  - [com.atproto.repo](/lexicons/com-atproto-repo)
+  - [com.atproto.server](/lexicons/com-atproto-server)
+  - [com.atproto.session](/lexicons/com-atproto-session)
+  - [com.atproto.sync](/lexicons/com-atproto-sync)
+  - [app.bsky.actor](/lexicons/app-bsky-actor)
+  - [app.bsky.embed](/lexicons/app-bsky-embed)
+  - [app.bsky.feed](/lexicons/app-bsky-feed)
+  - [app.bsky.graph](/lexicons/app-bsky-graph)
+  - [app.bsky.notification](/lexicons/app-bsky-notification)
+  - [app.bsky.system](/lexicons/app-bsky-system)
