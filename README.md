@@ -1,20 +1,28 @@
-## guides:
-  - [Protocol Overview](/guides/overview.md)
-  - [Identity](/guides/identity.md)
-  - [Data Repositories](/guides/data-repos.md)
-  - [Lexicon](/guides/lexicon.md)
-  - [Applications](/guides/applications.md)
-  - [FAQ](/guides/faq.md)
+# AT Protocol日本語ドキュメンテーション
 
-## specs:
+翻訳ソフト: [DeepL翻訳ツール](https://www.deepl.com/translator)  
+本家サイト: [Docs | AT Protocol](https://atproto.com/docs)  
+Bluesky Social App: [https://blueskyweb.xyz](https://blueskyweb.xyz)  
+GitHub: [bluesky-social](https://github.com/bluesky-social)
+
+
+## ガイド
+  - [プロトコル概要](/guides/overview.md)
+  - [アイデンティティ](/guides/identity.md)
+  - [データリポジトリ](/guides/data-repos.md)
+  - [Lexicon (レキシコン)](/guides/lexicon.md)
+  - [アプリケーション](/guides/applications.md)
+  - [よくある質問](/guides/faq.md)
+
+## 詳細設計
   - [ATP](/specs/atp.md)
-  - [URI Scheme](/specs/at-uri-scheme.md)
-  - [Lexicon Schemas](/specs/lexicon.md)
+  - [URIスキーム](/specs/at-uri-scheme.md)
+  - [Lexiconスキーマ](/specs/lexicon.md)
   - [XRPC](/specs/xrpc.md)
   - [NSID](/specs/nsid.md)
   - [DID:Placeholder](/specs/did-plc.md)
 
-## lexicons:
+## Lexicons
   - [com.atproto.account](/lexicons/com-atproto-account.md)
   - [com.atproto.blob](/lexicons/com-atproto-blob.md)
   - [com.atproto.handle](/lexicons/com-atproto-handle.md)
